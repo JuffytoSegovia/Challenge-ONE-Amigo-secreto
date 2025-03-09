@@ -3,6 +3,9 @@
 ## Descripción
 Amigo Secreto es una aplicación web que facilita la organización de juegos de intercambio de regalos. Permite a los usuarios agregar nombres de participantes, validar la información ingresada y sortear aleatoriamente a un amigo secreto.
 
+## 🔗 Demo
+Puedes probar la aplicación en vivo aquí: [Amigo Secreto Demo](https://juffytosegovia.github.io/Challenge-ONE-Amigo-secreto/)
+
 ## 📋 Características
 - Registro de participantes con validación de nombres
 - Sorteo aleatorio de amigo secreto
