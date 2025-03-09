@@ -55,3 +55,31 @@ function actualizarListaAmigos() {
         listaAmigos.appendChild(li);
     });
 }
+
+// Función para sortear un amigo al azar
+function sortearAmigo() {
+    // Verificar que haya suficientes amigos disponibles (mínimo 3)
+    if (amigos.length < 3) {
+        alert('Necesitas agregar al menos 3 amigos para realizar el sorteo');
+        return;
+    }
+    
+    // Generar un índice aleatorio
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    
+    // Obtener el amigo sorteado
+    const amigoSorteado = amigos[indiceAleatorio];
+    
+    // Mostrar el resultado
+    mostrarResultados(`El amigo secreto sorteado es: ${amigoSorteado}`);
+}
+
+// Función para mostrar los resultados del sorteo
+function mostrarResultados(mensaje) {
+    const listaResultados = document.getElementById('resultado');
+    listaResultados.innerHTML = '';
+    
+    const li = document.createElement('li');
+    li.textContent = mensaje;
+    listaResultados.appendChild(li);
+}
