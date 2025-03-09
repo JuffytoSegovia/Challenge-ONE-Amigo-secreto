@@ -2,6 +2,8 @@
 
 // Array para almacenar los nombres de los amigos
 let amigos = [];
+// Variable para rastrear si ya se realizó un sorteo
+let sorteoRealizado = false;
 
 // Función para agregar amigos a la lista
 function agregarAmigo() {
@@ -72,6 +74,21 @@ function sortearAmigo() {
     
     // Mostrar el resultado
     mostrarResultados(`El amigo secreto sorteado es: ${amigoSorteado}`);
+    
+    // Si es el primer sorteo, cambiar el texto del botón
+    if (!sorteoRealizado) {
+        const botonSortear = document.querySelector('.button-draw');
+        const textoSpan = document.createElement('span');
+        textoSpan.textContent = 'Volver a sortear amigo';
+        
+        // Conservar la imagen del botón
+        const imgBoton = botonSortear.querySelector('img');
+        botonSortear.innerHTML = '';
+        botonSortear.appendChild(imgBoton);
+        botonSortear.appendChild(textoSpan);
+        
+        sorteoRealizado = true;
+    }
 }
 
 // Función para mostrar los resultados del sorteo
