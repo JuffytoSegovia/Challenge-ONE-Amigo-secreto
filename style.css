@@ -4,6 +4,8 @@
     --color-tertiary: #C4C4C4;
     --color-button: #fe652b;
     --color-button-hover: #e55720;
+    --color-reset: #f44336;
+    --color-reset-hover: #d32f2f;
     --color-text: #444444;
     --color-white: #FFFFFF;
 }
@@ -89,7 +91,11 @@ body {
 
 .button-container {
     width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
+    align-items: center;
 }
 
 /* Estilos de entrada de texto */
@@ -146,6 +152,7 @@ ul {
 .button-draw {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 10px 40px;
     color: var(--color-white);
@@ -154,9 +161,32 @@ ul {
 }
 
 .button-draw img {
-    margin-right: 40px;
+    margin-right: 10px;
 }
 
 .button-draw:hover {
     background-color: var(--color-button-hover);
+}
+
+/* Estilos para el botón de reinicio */
+.button-reset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 40px;
+    color: var(--color-white);
+    background-color: var(--color-reset);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.button-reset img {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.button-reset:hover {
+    background-color: var(--color-reset-hover);
 }

@@ -40,6 +40,16 @@ function agregarAmigo() {
     // Actualizar la lista visual
     actualizarListaAmigos();
     
+    // Mostrar el botón de limpiar si es el primer amigo añadido
+    const botonReiniciar = document.getElementById('botonReiniciar');
+    if (amigos.length === 1) {
+        botonReiniciar.style.display = 'flex';
+        botonReiniciar.innerHTML = `
+            <img src="assets/broom_icon.png" alt="Ícono de escoba para limpiar" class="reset-icon">
+            <span style="flex: 1; text-align: center;">Limpiar</span>
+        `;
+    }
+    
     // Limpiar el input
     inputAmigo.value = '';
     inputAmigo.focus();
@@ -75,17 +85,26 @@ function sortearAmigo() {
     // Mostrar el resultado
     mostrarResultados(`El amigo secreto sorteado es: ${amigoSorteado}`);
     
-    // Si es el primer sorteo, cambiar el texto del botón
+    // Si es el primer sorteo, cambiar el texto del botón de sorteo
     if (!sorteoRealizado) {
         const botonSortear = document.querySelector('.button-draw');
         const textoSpan = document.createElement('span');
         textoSpan.textContent = 'Volver a sortear amigo';
+        textoSpan.style.flex = '1';
+        textoSpan.style.textAlign = 'center';
         
         // Conservar la imagen del botón
         const imgBoton = botonSortear.querySelector('img');
         botonSortear.innerHTML = '';
         botonSortear.appendChild(imgBoton);
         botonSortear.appendChild(textoSpan);
+        
+        // Cambiar también el texto del botón de reinicio
+        const botonReiniciar = document.getElementById('botonReiniciar');
+        botonReiniciar.innerHTML = `
+            <img src="assets/reset_icon.png" alt="Ícono para reiniciar" class="reset-icon">
+            <span style="flex: 1; text-align: center;">Reiniciar</span>
+        `;
         
         sorteoRealizado = true;
     }
@@ -99,4 +118,33 @@ function mostrarResultados(mensaje) {
     const li = document.createElement('li');
     li.textContent = mensaje;
     listaResultados.appendChild(li);
+}
+
+// Función para reiniciar el juego
+function reiniciarJuego() {
+    // Limpiar el array de amigos
+    amigos = [];
+    
+    // Limpiar las listas visuales
+    document.getElementById('listaAmigos').innerHTML = '';
+    document.getElementById('resultado').innerHTML = '';
+    
+    // Ocultar el botón de reiniciar
+    const botonReiniciar = document.getElementById('botonReiniciar');
+    botonReiniciar.style.display = 'none';
+    
+    // Resetear el estado de sorteo y restaurar el texto original del botón de sorteo
+    if (sorteoRealizado) {
+        const botonSortear = document.querySelector('.button-draw');
+        botonSortear.innerHTML = `
+            <img src="assets/play_circle_outline.png" alt="Ícono para sortear">
+            <span style="flex: 1; text-align: center;">Sortear amigo</span>
+        `;
+        sorteoRealizado = false;
+    }
+    
+    // Limpiar y enfocar el campo de entrada
+    const inputAmigo = document.getElementById('amigo');
+    inputAmigo.value = '';
+    inputAmigo.focus();
 }
