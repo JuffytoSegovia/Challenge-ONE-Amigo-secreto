@@ -76,6 +76,10 @@ function sortearAmigo() {
         return;
     }
     
+    // Reproducir el sonido solo si se cumplen las condiciones para el sorteo
+    const sonidoSorteo = new Audio('assets/sorteo.mp3');
+    sonidoSorteo.play();
+    
     // Generar un índice aleatorio
     const indiceAleatorio = Math.floor(Math.random() * amigos.length);
     
